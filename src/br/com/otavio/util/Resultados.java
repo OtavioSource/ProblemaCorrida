@@ -11,7 +11,8 @@ import br.com.otavio.model.Volta;
 
 public class Resultados {
 
-	private InformacoesCorrida informacoesCorrida = new InformacoesCorrida(new Voltas("corrida.log", new LeitorArquivo()));
+	private InformacoesCorrida informacoesCorrida = new InformacoesCorrida(
+			new Voltas("corrida.log", new LeitorArquivo()));
 
 	public void imprimeVelocidadeMediaDeCadaPiloto() {
 
@@ -24,6 +25,7 @@ public class Resultados {
 					+ df.format(velocidadeMediaPorPiloto));
 
 		});
+		System.out.println("\n");
 
 	}
 
@@ -32,6 +34,7 @@ public class Resultados {
 		List<Piloto> listaPiloto = informacoesCorrida.pilotosOrdenadosPorPosicaoDeChegada();
 		listaPiloto.forEach(p -> System.out.println("Piloto " + p.getNome() + " fez sua melhor volta em "
 				+ p.getMelhorTempoVolta() + "  na " + p.getNumeroDaMelhorVolta() + "º volta"));
+		System.out.println("\n");
 
 	}
 
@@ -41,6 +44,7 @@ public class Resultados {
 		System.out
 				.println("Piloto " + voltas.get(0).getPiloto().getNome() + " fez a melhor volta da corrida, fazendo em "
 						+ voltas.get(0).getTempoVolta() + " na " + voltas.get(0).getNumeroVolta() + "º volta!!!");
+		System.out.println("\n");
 
 	}
 
@@ -66,6 +70,7 @@ public class Resultados {
 
 			System.out.println("Piloto " + listaPilotos.get(index).getNome() + " " + chegadaDepoisDoVencedor);
 		});
+		System.out.println("\n");
 
 	}
 
@@ -75,7 +80,7 @@ public class Resultados {
 
 		IntStream.range(0, listaPilotos.size()).forEach(posicao -> System.out
 				.println("Posição: " + (posicao + 1) + "º lugar" + "\n" + listaPilotos.get(posicao) + "\n"));
-
+		System.out.println("\n");
 	}
 
 }
