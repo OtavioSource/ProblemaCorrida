@@ -23,40 +23,20 @@ public class Volta {
 		return horaVolta;
 	}
 
-	public void setHoraVolta(LocalTime horaVolta) {
-		this.horaVolta = horaVolta;
-	}
-
 	public Piloto getPiloto() {
 		return piloto;
-	}
-
-	public void setPiloto(Piloto piloto) {
-		this.piloto = piloto;
 	}
 
 	public Integer getNumeroVolta() {
 		return numeroVolta;
 	}
 
-	public void setNumeroVolta(Integer numeroVolta) {
-		this.numeroVolta = numeroVolta;
-	}
-
 	public LocalTime getTempoVolta() {
 		return tempoVolta;
 	}
 
-	public void setTempoVolta(LocalTime tempoVolta) {
-		this.tempoVolta = tempoVolta;
-	}
-
 	public Double getVelocidadeMedia() {
 		return velocidadeMedia;
-	}
-
-	public void setVelocidadeMedia(Double velocidadeMedia) {
-		this.velocidadeMedia = velocidadeMedia;
 	}
 
 }

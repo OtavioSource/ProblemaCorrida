@@ -13,8 +13,7 @@ import br.com.otavio.model.Volta;
 public class InformacoesCorrida {
 
 	private Voltas informacoesVoltas;
-	
-	
+
 	public InformacoesCorrida(Voltas informacaoVolta) {
 		this.informacoesVoltas = informacaoVolta;
 	}
@@ -43,7 +42,9 @@ public class InformacoesCorrida {
 			piloto.setNumeroUltimaVolta(v.size());
 			piloto.setTempoTotalProva(
 					v.get(v.size() - 1).getHoraVolta().minus(v.get(0).getHoraVolta().toNanoOfDay(), ChronoUnit.NANOS));
+			
 			v.sort((v1, v2) -> v1.getTempoVolta().compareTo(v2.getTempoVolta()));
+			
 			piloto.setMelhorTempoVolta(v.get(0).getTempoVolta());
 			piloto.setNumeroDaMelhorVolta(v.get(0).getNumeroVolta());
 			listaPilotosComInfoDeCadaVolta.add(piloto);
@@ -54,6 +55,8 @@ public class InformacoesCorrida {
 	}
 
 	private List<Piloto> ordenaListaPilotos(List<Piloto> listaPilotos) {
+		
+		
 
 		Comparator<Piloto> comparatorNumeroVolta = (p1, p2) -> p1.getNumeroUltimaVolta()
 				.compareTo(p2.getNumeroUltimaVolta());

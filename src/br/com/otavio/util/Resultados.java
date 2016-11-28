@@ -4,7 +4,6 @@ import java.text.DecimalFormat;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.IntStream;
 
 import br.com.otavio.model.Piloto;
@@ -12,15 +11,13 @@ import br.com.otavio.model.Volta;
 
 public class Resultados {
 
-	private InformacoesCorrida infos = new InformacoesCorrida(new Voltas("corrida.log", new LeitorArquivo()));
+	private InformacoesCorrida informacoesCorrida = new InformacoesCorrida(new Voltas("corrida.log", new LeitorArquivo()));
 
 	public void imprimeVelocidadeMediaDeCadaPiloto() {
 
 		DecimalFormat df = new DecimalFormat("#.####");
 
-		Map<String, List<Volta>> agrupamentoPorCodigoDoPiloto = infos.informacoesVoltaPorPiloto();
-
-		agrupamentoPorCodigoDoPiloto.forEach((k, v) -> {
+		informacoesCorrida.informacoesVoltaPorPiloto().forEach((k, v) -> {
 
 			Double velocidadeMediaPorPiloto = v.stream().mapToDouble(Volta::getVelocidadeMedia).average().getAsDouble();
 			System.out.println(k + " : " + v.get(0).getPiloto().getNome() + " fez uma velocidade média de "
@@ -32,7 +29,7 @@ public class Resultados {
 
 	public void imprimeMelhorVoltaDeCadaPiloto() {
 
-		List<Piloto> listaPiloto = infos.pilotosOrdenadosPorPosicaoDeChegada();
+		List<Piloto> listaPiloto = informacoesCorrida.pilotosOrdenadosPorPosicaoDeChegada();
 		listaPiloto.forEach(p -> System.out.println("Piloto " + p.getNome() + " fez sua melhor volta em "
 				+ p.getMelhorTempoVolta() + "  na " + p.getNumeroDaMelhorVolta() + "º volta"));
 
@@ -40,7 +37,7 @@ public class Resultados {
 
 	public void imprimeMelhorVoltaDaCorrida() {
 
-		List<Volta> voltas = infos.voltasOrdenadasPorMenorTempo();
+		List<Volta> voltas = informacoesCorrida.voltasOrdenadasPorMenorTempo();
 		System.out
 				.println("Piloto " + voltas.get(0).getPiloto().getNome() + " fez a melhor volta da corrida, fazendo em "
 						+ voltas.get(0).getTempoVolta() + " na " + voltas.get(0).getNumeroVolta() + "º volta!!!");
@@ -49,7 +46,7 @@ public class Resultados {
 
 	public void imprimeTempoDeChegadaDepoisDoVencedor() {
 
-		List<Piloto> listaPilotos = infos.pilotosOrdenadosPorPosicaoDeChegada();
+		List<Piloto> listaPilotos = informacoesCorrida.pilotosOrdenadosPorPosicaoDeChegada();
 
 		System.out.println("Tempo de chegada dos pilotos após a chegada do vencedor!!!");
 		IntStream.range(0, listaPilotos.size()).forEach(index -> {
@@ -74,7 +71,7 @@ public class Resultados {
 
 	public void imprimeRankingFinalDaCorrida() {
 
-		List<Piloto> listaPilotos = infos.pilotosOrdenadosPorPosicaoDeChegada();
+		List<Piloto> listaPilotos = informacoesCorrida.pilotosOrdenadosPorPosicaoDeChegada();
 
 		IntStream.range(0, listaPilotos.size()).forEach(posicao -> System.out
 				.println("Posição: " + (posicao + 1) + "º lugar" + "\n" + listaPilotos.get(posicao) + "\n"));
