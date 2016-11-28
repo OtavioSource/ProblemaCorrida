@@ -3,7 +3,7 @@ package br.com.otavio.main;
 import java.io.IOException;
 import java.util.Scanner;
 
-import br.com.otavio.util.PrintRespostas;
+import br.com.otavio.util.Resultados;
 
 public class StartCorrida {
 	
@@ -21,7 +21,7 @@ public class StartCorrida {
 
 	public static void main(String[] args) throws IOException {
 		
-		PrintRespostas resultados = new PrintRespostas();	
+		Resultados resultados = new Resultados();	
 		
 		int opcao;
         Scanner entrada = new Scanner(System.in);
@@ -48,7 +48,7 @@ public class StartCorrida {
                 
             case 3:
         		/*Descobrir a melhor volta de cada piloto*/
-        		resultados.imprimirMelhorVoltaDeCadaPiloto();
+        		resultados.imprimeMelhorVoltaDeCadaPiloto();
                 break;
                 
             case 4:
