@@ -1,6 +1,5 @@
 package br.com.otavio.util;
 
-import java.io.IOException;
 import java.text.DecimalFormat;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
@@ -13,7 +12,7 @@ import br.com.otavio.model.Volta;
 
 public class Resultados {
 
-	private InformacoesCorrida infos = new InformacoesCorrida();
+	private InformacoesCorrida infos = new InformacoesCorrida(new Voltas("corrida.log", new LeitorArquivo()));
 
 	public void imprimeVelocidadeMediaDeCadaPiloto() {
 
@@ -31,7 +30,7 @@ public class Resultados {
 
 	}
 
-	public void imprimeMelhorVoltaDeCadaPiloto() throws IOException {
+	public void imprimeMelhorVoltaDeCadaPiloto() {
 
 		List<Piloto> listaPiloto = infos.pilotosOrdenadosPorPosicaoDeChegada();
 		listaPiloto.forEach(p -> System.out.println("Piloto " + p.getNome() + " fez sua melhor volta em "
@@ -39,7 +38,7 @@ public class Resultados {
 
 	}
 
-	public void imprimeMelhorVoltaDaCorrida() throws IOException {
+	public void imprimeMelhorVoltaDaCorrida() {
 
 		List<Volta> voltas = infos.voltasOrdenadasPorMenorTempo();
 		System.out
@@ -48,7 +47,7 @@ public class Resultados {
 
 	}
 
-	public void imprimeTempoDeChegadaDepoisDoVencedor() throws IOException {
+	public void imprimeTempoDeChegadaDepoisDoVencedor() {
 
 		List<Piloto> listaPilotos = infos.pilotosOrdenadosPorPosicaoDeChegada();
 
@@ -73,7 +72,7 @@ public class Resultados {
 
 	}
 
-	public void imprimeRankingFinalDaCorrida() throws IOException {
+	public void imprimeRankingFinalDaCorrida() {
 
 		List<Piloto> listaPilotos = infos.pilotosOrdenadosPorPosicaoDeChegada();
 

@@ -12,11 +12,16 @@ import br.com.otavio.model.Volta;
 
 public class InformacoesCorrida {
 
-	private InformacoesVoltas informacao = new InformacoesVoltas();
+	private Voltas informacoesVoltas;
+	
+	
+	public InformacoesCorrida(Voltas informacaoVolta) {
+		this.informacoesVoltas = informacaoVolta;
+	}
 
 	public Map<String, List<Volta>> informacoesVoltaPorPiloto() {
 
-		List<Volta> voltas = informacao.infoVoltas();
+		List<Volta> voltas = informacoesVoltas.getVoltas();
 		Map<String, List<Volta>> agrupamentoDeVoltasPorCodigoDoPiloto = voltas.stream()
 				.collect(Collectors.groupingBy(v -> v.getPiloto().getCodigo()));
 
@@ -63,7 +68,7 @@ public class InformacoesCorrida {
 
 	public List<Volta> voltasOrdenadasPorMenorTempo() {
 
-		List<Volta> voltas = informacao.infoVoltas();
+		List<Volta> voltas = informacoesVoltas.getVoltas();
 		voltas.sort((v1, v2) -> v1.getTempoVolta().compareTo(v2.getTempoVolta()));
 
 		return voltas;
